@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: inherit !important;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.b_main_wrapper {
+    margin: auto;
+    width: 80%;
+    background: white;
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+
+.b_logo {
+    width: 200px;
+    height: 55px;
+}
+
+.b_logo img {
+    mix-blend-mode: multiply;
+}
+
+header .nav-item.dropdown li a:hover {
+    background: #09452dc2;
+}
+
+header .b_bottom ul {
+    width: 65%;
+
+    justify-content: space-between;
+}
+
+header .b_bottom a {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+
+}
+
+header .b_bottom a:hover {
+    background: #00B5EF;
+}
+
+/*personal banking_banner*/
+/* .b_personal_banking_banner{
+   padding-top: 80px !important;
+    background-color: red;
+    background-repeat: no-repeat !important;
+    background-size:cover  !important;
+    background: url("/img/personal_banner.jpg");
+}
+.b_personal_banking_banner .b_personal_container{
+      width: 50%;
+}
+.b_bg_primary2 {
+    text-transform: uppercase;
+}
+.b_bg_primary2:hover{
+    background: #073e51;
+}
+.b_continue_login_btn p{
+    width: 70%;
+    margin: auto;
+    font-size: 15px;
+} */
+
+.b_login_form span {
+    font-size: 12px;
+}
+
+.b_login_form label {
+    font-size: 12px;
+    font-weight: 600;
+    color: black;
+}
+
+.b_login_form input {
+    outline: none;
+    border: none;
+    box-shadow: none !;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    margin-top: 5px;
+    padding: 4px;
+}
+
+.b_captcha_box {
+    width: 100px;
+    height: 50px;
+    padding: 10px;
+}
+
+.b_captcha_box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.b_form_links a {
+    font-size: 12px;
+    color: #10578D !important;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.b_form_links a:hover {
+    text-decoration: underline;
+}
+
+.b_keyborad_content {
+    background: url("../img/virtual\ keyboard.png");
+    padding: 10px 5px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.b_login_form .b_content {
+    background: #2B2F76;
+    font-size: 11px;
+    padding: 10px 5px;
+    padding-right: 10px;
+    width: 98.5%;
+    font-weight: 500;
+}
+
+.b_login_form .b_content ul {
+    padding-left: 15px;
+}
+
+.b_login_form .b_content ul li {
+    margin-top: 5px;
+}
+
+.b_login_form .b_top_img {
+    width: 98.5%;
+    height: 300px;
+
+}
+
+.b_login_form .b_top_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.b_login_form .b_notice a:hover {
+    text-decoration: underline !important;
+}
+
+.b_tips p {
+    line-height: 25px;
+}
+
+.b_tips .b_tips_box {
+    border: 1px solid rgba(0, 0, 0, 0.038);
+}
+
+.b_tips .b_tips_box:hover {
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.056);
+}
+
+.b_tips .b_icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50%;
+    margin: 10px auto;
+}
+
+.b_sign_img_box {
+    width: 80px;
+    padding: 8px;
+    height: 40px;
+}
+
+.b_sign_img_box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*dynamic keyboard */
+.b_dynamic_keyboard {
+    width: 98.5%;
+}
+
+.b_dynamic_keyboard .b_keyborad_box {
+    display: grid;
+    background: #F0F5F7;
+    border: 1px solid #377292;
+    grid-template-columns: repeat(13, 1fr);
+}
+.b_dynamic_keyboard .b_keyborad_box .b_key{
+    border-bottom: 1px solid #377292;
+    border-right: 1px solid #377292;
+    height: 40px;
+    line-height: 2;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+}
