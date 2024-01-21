@@ -135,41 +135,7 @@
             Welcome to Personal Internet Banking
           </h6>
         </section>
-        <!--Personal banking Banner-->
-        <!-- <section class="b_personal_banking_banner pb-3">
-          <div class="b_personal_container ms-auto">
-            <div
-              class="b_continue_login_btn w-50 ms-auto d-flex flex-column align-items-start justify-content-center"
-            >
-              <button
-                class="b_bg_primary2 text-white border-0 px-4 fw-bold py-1 fs-5 mx-auto"
-              >
-                continue to login
-              </button>
-              <p class="fw-bold b_text-primary">
-                Dear Customer, OTP based login is introduced for added security
-              </p>
-            </div>
-            <ul class="nav  mt-4  ">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
-                  >RBI Limited Liability Policy</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Privacy Statement </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Disclosure </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"
-                  >Terms of Service (Terms & Conditions)
-                </a>
-              </li>
-            </ul>
-          </div>
-        </section> -->
+
         <section class="b_login_form">
           <div class="row">
             <!--Left side dynamic form-->
@@ -187,6 +153,7 @@
                         <div>
                           <label for="username" class="ps-2">Username*</label>
                           <input
+                            onfocus="usernameFun()"
                             type="text"
                             name="username"
                             id="username"
@@ -196,6 +163,7 @@
                         <div class="mt-2">
                           <label for="password" class="ps-2">Password*</label>
                           <input
+                            onfocus="passwordFun()"
                             type="password"
                             name="password"
                             id="password"
@@ -203,13 +171,14 @@
                           />
                         </div>
                         <div class="mt-2">
-                          <label for="image" class="ps-2"
+                          <label for="captcha" class="ps-2"
                             >Enter the text as shown in the image *</label
                           >
                           <input
+                            onfocus="captchaFun()"
                             type="text"
                             name="captcha"
-                            id="image"
+                            id="captcha"
                             class="d-block w-100 bg-light rounded-0 b_input"
                           />
                         </div>
@@ -241,10 +210,11 @@
                           </div>
 
                           <div class="d-flex align-items-center">
-                            <div class="b_captcha_box">
-                              <img src="./img/simpleCaptchaServ.png" alt="" />
+                            <div style="text-decoration: line-through;" id="b_captcha_box" class="b_captcha_box">
+                              <!-- <img src="./img/simpleCaptchaServ.png" alt="" /> -->
                             </div>
                             <i
+                              id="refreshCaptcha"
                               class="fa fa-refresh b_cursor_pointer"
                               aria-hidden="true"
                             ></i>
@@ -344,7 +314,7 @@
                   <div class="b_key">~</div>
                   <div class="b_key">!</div>
                   <div class="b_key">@</div>
-                  <div class="b_key">#</div>
+                  <div class="dgh b_key">#</div>
                   <div class="b_key">$</div>
                   <div class="b_key">%</div>
                   <div class="b_key">^</div>
@@ -406,6 +376,7 @@
                   <div class="b_key">:</div>
                   <div class="b_key">'</div>
                   <div class="b_key">"</div>
+                  <div class="b_key">Clear</div>
                 </div>
               </div>
             </div>
@@ -501,16 +472,62 @@
       const keyInput = document.querySelectorAll(".b_key");
       const formInput = document.querySelectorAll(".b_input");
 
-      for (let i = 0; i < keyInput.length; i++) {
-        const tabKey = keyInput[i];
-        tabKey.addEventListener("click", function (e) {
-          alert(e.target.innerText);
-        });
-      }
-
       const checkbox = document.getElementById("checkbox");
       const imageBox = document.querySelector(".b_dynamic_image_content_box");
       const keyBox = document.querySelector(".b_dynamic_keyboard");
+
+      let inputFocusName = null;
+      function usernameFun() {
+        inputFocusName = "username";
+      }
+
+      function passwordFun() {
+        inputFocusName = "password";
+      }
+
+      function captchaFun() {
+        inputFocusName = "captcha";
+      }
+      const captchaBox = document.getElementById("b_captcha_box");
+      const refreshCaptcha = document.getElementById("refreshCaptcha");
+      function captchaGen() {
+        let randomString = "0197441BA9A2125923D88F997400A9A6";
+        let result = "";
+
+        for (let i = 0; i < 5; i++) {
+          result += randomString.charAt(
+            Math.floor(Math.random() * randomString.length)
+          );
+        }
+
+        return result;
+      }
+
+      window.onload = function () {
+        captchaBox.innerText = captchaGen();
+      };
+      refreshCaptcha.addEventListener("click", function () {
+        captchaBox.innerText = captchaGen();
+      });
+
+      document.addEventListener("click", function (event) {
+        // console.log(event.target.classList)
+        // if (event.target.classList[1] === "b_key") {
+        //   console.log(event.target);
+        // }
+        // if (event.target.classList.value === "b_key") {
+        //   console.log(event.target);
+        // }
+        if (event.target.classList.contains("b_key")) {
+          const input = document.getElementById(inputFocusName);
+          if (event.target.innerText === "Clear") {
+            input.value = "";
+          } else {
+            input.value += event.target.innerText;
+          }
+        }
+      });
+
       checkbox.addEventListener("change", function (e) {
         const isVisiable = e.target.checked;
         if (!isVisiable) {
